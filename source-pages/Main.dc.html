@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Personal Endocrine Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&amp;family=Public+Sans:wght@400;500;600&amp;family=Schibsted+Grotesk:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#F2F1EC}
+a{color:#5C7A64}a:hover{color:#4A6652}
+input::placeholder{color:#A6A199}
+summary::-webkit-details-marker{display:none}
+.chev{flex:none;transition:transform .2s}
+details[open] .chev{transform:rotate(180deg)}
+.mnav{display:none;position:relative}
+.mnav>summary{list-style:none;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid #D8DAD0;border-radius:999px}
+.mnav>summary::-webkit-details-marker{display:none}
+.mnav-panel{position:absolute;right:0;top:52px;z-index:20;background:#F8F8F4;border:1px solid #D8DAD0;border-radius:18px;padding:10px;min-width:250px;display:flex;flex-direction:column;box-shadow:0 12px 32px rgba(30,29,27,.12)}
+.mnav-panel a{color:#252A26;text-decoration:none;padding:12px 14px;border-radius:12px;font-weight:500;font-size:16px}
+@media (max-width:1180px){.nl{display:none !important}.mnav{display:block}}
+@media (max-width:760px){.badge{left:50% !important;right:auto !important;transform:translateX(-50%);width:calc(100% - 32px);max-width:340px !important;bottom:16px !important;text-align:center;box-sizing:border-box}.stats{grid-template-columns:repeat(2,minmax(0,1fr)) !important}.stats>div{padding:0 14px !important}}
+.plan{border:1px solid #D8DAD0;transition:border-color .2s,box-shadow .2s}
+.plan-eye{color:#5D635D;transition:color .2s}
+.plan-btn{border:1.5px solid #252A26;color:#252A26;background:transparent;transition:background-color .2s,border-color .2s,color .2s}
+.plan.on,.plan:hover,.plan:focus-within{border-color:#5C7A64;box-shadow:inset 0 0 0 1px #5C7A64}
+.plan.on .plan-eye,.plan:hover .plan-eye,.plan:focus-within .plan-eye{color:#5C7A64}
+.plan.on .plan-btn,.plan:hover .plan-btn,.plan:focus-within .plan-btn{background:#5C7A64;border-color:#5C7A64;color:#FFFFFF}
+.plans:has(.plan:hover,.plan:focus-within) .plan.on:not(:hover):not(:focus-within){border-color:#D8DAD0;box-shadow:none}
+.plans:has(.plan:hover,.plan:focus-within) .plan.on:not(:hover):not(:focus-within) .plan-eye{color:#5D635D}
+.plans:has(.plan:hover,.plan:focus-within) .plan.on:not(:hover):not(:focus-within) .plan-btn{background:transparent;border-color:#252A26;color:#252A26}
+.feats .feat+.feat{border-left:1px solid #C9CEC2}
+.feats .feat:first-child{padding-left:0 !important}.feats .feat:last-child{padding-right:0 !important}
+@media (max-width:1100px){.feats{grid-template-columns:auto auto !important;justify-content:start !important;row-gap:28px}.feats .feat:nth-child(3){border-left:0;padding-left:0 !important}.feats .feat:nth-child(2){padding-right:0 !important}}
+@media (max-width:640px){.feats{grid-template-columns:1fr !important;row-gap:20px}.feats .feat{border-left:0 !important;padding:0 !important}.feats .feat span{white-space:normal !important}}
+@media (max-width:1100px){.cards{grid-template-columns:repeat(2,1fr) !important}}
+@media (max-width:640px){.cards{grid-template-columns:1fr !important;gap:10px !important}.cards>div{position:relative;flex-direction:row !important;align-items:center;gap:14px !important;padding:16px 18px !important}.cards>div>p{display:none}.cards>div>h3{flex:1;font-size:18px !important;line-height:1.3}.cards>div>a{margin-top:0 !important;font-size:0 !important;min-height:0 !important}.cards>div>a::after{content:"";position:absolute;inset:0}.cards>.cta-card{flex-direction:column !important;align-items:flex-start;padding:20px 18px !important}.cards>.cta-card>a{font-size:15px !important;min-height:44px !important;margin-top:4px !important}.cards>.cta-card>a::after{content:none}}
+@media (max-width:640px){
+#top{padding:44px 24px 40px !important;gap:36px !important}
+#top a[style*="border-radius: 999px"]{flex:1 1 100%;justify-content:center;text-align:center}
+div[style*="justify-content: space-around"]{flex-direction:column;align-items:flex-start !important;justify-content:flex-start !important;padding:16px 24px !important;font-size:17px !important;gap:8px !important}
+#care{padding:44px 24px 28px !important;gap:28px !important}
+
+#how{padding:28px 16px !important}#how>div{padding:28px 20px !important;gap:24px !important;border-radius:24px !important}#how>div>div:last-child{gap:14px !important}#how>div>div:last-child>div{padding-top:14px !important}#how h2+p{margin-top:-4px !important}
+#pricing{padding:44px 24px 56px !important;gap:28px !important}
+#doctor>div{padding:44px 24px !important;gap:32px !important}
+#doctor>div>div:first-child{aspect-ratio:4/3 !important}
+#faq{padding:44px 24px !important;gap:24px !important}
+section[style*="padding: 0 24px 104px"]{padding:0 16px 56px !important}
+}
+@media (max-width:1180px){.plan-eye{white-space:normal !important;min-height:3.2em}}@media (max-width:760px){.plan-eye{min-height:0}}
+@media (min-width:1181px){.nl>a:last-child{margin-left:96px}}
+@media (max-width:640px){.tb-addr{display:none}}
+</style>
+</helmet>
+<div style="background: #F2F1EC; color: #252A26; font-family: 'Public Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.6;">
+
+<!-- Top bar -->
+<div style="background: #252A26; color: #DDD9D2; font-size: 14px;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: center;">
+<span style="display: flex; flex-wrap: wrap; gap: 4px 0; align-items: center;"><span class="tb-addr">12231 Newport Ave, North Tustin, CA 92705</span><span class="tb-addr" aria-hidden="true" style="width: 1px; height: 14px; background: #4A504B; margin: 0 18px;"></span><a href="tel:9494412164" style="color: #FFFFFF; font-weight: 600; text-decoration: none;">(949) 441-2164</a></span>
+<span style="display: flex; flex-wrap: wrap; gap: 4px 0; align-items: center;"><span class="tb-addr">In person or telehealth</span><span class="tb-addr" aria-hidden="true" style="width: 1px; height: 14px; background: #4A504B; margin: 0 18px;"></span><span>English · Español · 한국어</span></span>
+</div>
+</div>
+
+<!-- Nav -->
+<header style="border-bottom: 1px solid #D8DAD0;">
+<nav style="max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between;">
+<a href="#top" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #252A26;">
+<span style="display: inline-flex; flex-direction: column; align-items: center; gap: 2.9px; line-height: 1; color: #252A26; font-family: 'Montserrat', sans-serif; font-weight: 500;"><span style="font-size: 24px; letter-spacing: 0.08em; margin-right: -0.08em; white-space: nowrap;">PERS<span style="position: relative; top: -0.155em; font-size: 0.86em;">O</span><span aria-hidden="true" style="display: inline-block; width: 0.621em; height: 0.07em; margin-left: -0.752em; margin-right: 0.131em; background: currentColor;"></span>NAL</span><span style="font-size: 11.0px; letter-spacing: 0.34em; margin-right: -0.34em; white-space: nowrap;">ENDOCRINE</span></span>
+</a>
+<div class="nl" style="display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: center; font-size: 15px; font-weight: 500;">
+<a href="#care" style="color: #252A26; text-decoration: none;">Specialties</a>
+<a href="#how" style="color: #252A26; text-decoration: none;">Our approach</a>
+<a href="Pricing.dc.html" style="color: #252A26; text-decoration: none;">Pricing</a>
+<a href="DrChoi.dc.html" style="color: #252A26; text-decoration: none;">Dr. Choi</a>
+<a href="#faq" style="color: #252A26; text-decoration: none;">FAQ</a>
+<a href="Book.dc.html" style="background: {{accent}}; color: #FFFFFF; text-decoration: none; padding: 12px 22px; border-radius: 999px; font-weight: 600; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center;">Request a consultation</a>
+</div>
+<details class="mnav"><summary aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#252A26" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></summary><div class="mnav-panel"><a href="#care">Specialties</a><a href="#how">Our approach</a><a href="Pricing.dc.html">Pricing</a><a href="DrChoi.dc.html">Dr. Choi</a><a href="#faq">FAQ</a><a href="tel:9494412164">(949) 441-2164</a><a href="Book.dc.html" style="background: #5C7A64; color: #FFFFFF; text-align: center; font-weight: 600; margin-top: 6px; border-radius: 999px;">Request a consultation</a></div></details>
+</nav>
+</header>
+
+<!-- Hero -->
+<section id="top" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 48px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center;">
+<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 28px;">
+<span style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{accent}};">Endocrinology · North Tustin, CA</span>
+<h1 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: clamp(42px, 5.4vw, 72px); line-height: 1.04; letter-spacing: -0.025em;">Your doctor should have time<br>to understand you.</h1>
+<p style="margin: 0; font-size: 20px; color: #4A504A; max-width: 560px;">Dr. Jinsun Choi built Personal Endocrine around longer visits, direct access and a real patient-doctor relationship.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px;">
+<a href="Book.dc.html" style="background: {{accent}}; color: #FFFFFF; text-decoration: none; padding: 16px 28px; border-radius: 999px; font-weight: 600; font-size: 17px; min-height: 44px; box-sizing: border-box;">Request a consultation</a>
+<a href="#pricing" style="border: 1.5px solid #252A26; color: #252A26; text-decoration: none; padding: 15px 28px; border-radius: 999px; font-weight: 600; font-size: 17px; min-height: 44px; box-sizing: border-box;">See pricing</a>
+</div>
+</div>
+<div style="flex: 1 1 380px; min-width: 0; position: relative;">
+<img src="/_blob/5b2b338a9f2f99e18279e6e9b9d44caa" alt="Dr. Jinsun Choi, board-certified endocrinologist" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 28px; background: #E4E6DE;">
+<div class="badge" style="position: absolute; left: -24px; bottom: 32px; background: #F8F8F4; border: 1px solid #D8DAD0; border-radius: 18px; padding: 18px 22px; box-shadow: 0 12px 32px rgba(30,29,27,0.10); max-width: 280px;">
+<div style="font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: 18px;">Jinsun Choi, MD</div>
+<div style="font-size: 14px; color: #5D635D; line-height: 1.5;">Board-certified, Endocrinology and Obesity Medicine</div>
+</div>
+</div>
+</section>
+
+<!-- Proof bar -->
+<div style="background: {{accent}}; color: #FFFFFF;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 10px 24px; display: flex; flex-wrap: wrap; gap: 8px 40px; justify-content: space-around; align-items: center; font-size: 19px; font-weight: 700; letter-spacing: -0.005em;">
+<span style="display: flex; gap: 10px; align-items: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Up to an hour at your first visit</span>
+<span style="display: flex; gap: 10px; align-items: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>Every visit with Dr. Choi</span>
+<span style="display: flex; gap: 10px; align-items: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"></path></svg>In person or telehealth</span>
+</div>
+</div>
+
+<!-- Feature strip -->
+<section style="background: #E4E6DE; border-bottom: 1px solid #D8DAD0;">
+<div class="feats" style="max-width: 1200px; margin: 0 auto; padding: 40px 24px; display: grid; grid-template-columns: repeat(4, 1fr);"><div class="feat" style="display: flex; align-items: center; gap: 16px; padding: 6px 28px;"><svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="#3F5A47" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none;"><circle cx="24" cy="15" r="7"></circle><path d="M10 40c0-8 6.3-13 14-13s14 5 14 13z"></path></svg><span style="font-size: 17px; line-height: 1.45; color: #252A26;"><span style="white-space: nowrap;">Individualized</span><br><span style="white-space: nowrap;">care plans</span></span></div><div class="feat" style="display: flex; align-items: center; gap: 16px; padding: 6px 28px;"><svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="#3F5A47" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none;"><rect x="9" y="28" width="7" height="12" rx="1.5"></rect><rect x="20.5" y="19" width="7" height="21" rx="1.5"></rect><rect x="32" y="9" width="7" height="31" rx="1.5"></rect></svg><span style="font-size: 17px; line-height: 1.45; color: #252A26;"><span style="white-space: nowrap;">Evidence-based</span><br><span style="white-space: nowrap;">treatments</span></span></div><div class="feat" style="display: flex; align-items: center; gap: 16px; padding: 6px 28px;"><svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="#3F5A47" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none;"><circle cx="24" cy="18" r="11"></circle><path d="M18 27.5L15 42l9-5 9 5-3-14.5"></path><path d="M19.5 18l3 3 6-6"></path></svg><span style="font-size: 17px; line-height: 1.45; color: #252A26;"><span style="white-space: nowrap;">Double board-certified</span><br><span style="white-space: nowrap;">endocrinologist</span></span></div><div class="feat" style="display: flex; align-items: center; gap: 16px; padding: 6px 28px;"><svg width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="#3F5A47" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none;"><rect x="8" y="10" width="32" height="30" rx="3"></rect><path d="M8 19h32M16 6v8M32 6v8"></path><path d="M18 29l4 4 8-8"></path></svg><span style="font-size: 17px; line-height: 1.45; color: #252A26;"><span style="white-space: nowrap;">Appointments typically</span><br><span style="white-space: nowrap;">within 1–3 days</span></span></div></div>
+</section>
+
+<!-- Conditions -->
+<section id="care" style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 40px; display: flex; flex-direction: column; gap: 48px;">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 680px;">
+<h2 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.1; letter-spacing: -0.02em;">Our specialties</h2>
+<p style="margin: 0; color: #4A504A; font-size: 19px;">Symptoms don’t always tell the whole story. Dr. Choi looks at your health history, lab results and what you’re experiencing to understand the full picture.</p>
+</div>
+<div class="cards" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+<div style="background: #F8F8F4; border: 1px solid #D8DAD0; border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;">
+<h3 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-size: 20px; font-weight: 600; line-height: 1.25;">Type 1 and Type 2 Diabetes</h3>
+<p style="margin: 0; color: #4A504A; font-size: 16px;">Type 1 and type 2 care, with CGM reviews between visits.</p>
+<a href="Diabetes.dc.html" style="margin-top: auto; padding-top: 4px; font-weight: 600; font-size: 15px; color: {{accent}}; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 36px;">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div style="background: #F8F8F4; border: 1px solid #D8DAD0; border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;">
+<h3 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-size: 20px; font-weight: 600; line-height: 1.25;">Weight Management</h3>
+<p style="margin: 0; color: #4A504A; font-size: 16px;">Medical weight management from a board-certified Obesity Medicine physician.</p>
+<a href="Weight.dc.html" style="margin-top: auto; padding-top: 4px; font-weight: 600; font-size: 15px; color: {{accent}}; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 36px;">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div style="background: #F8F8F4; border: 1px solid #D8DAD0; border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;">
+<h3 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-size: 20px; font-weight: 600; line-height: 1.25;">Thyroid</h3>
+<p style="margin: 0; color: #4A504A; font-size: 16px;">Careful diagnosis and treatment of thyroid conditions.</p>
+<a href="Thyroid.dc.html" style="margin-top: auto; padding-top: 4px; font-weight: 600; font-size: 15px; color: {{accent}}; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 36px;">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div style="background: #F8F8F4; border: 1px solid #D8DAD0; border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;">
+<h3 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-size: 20px; font-weight: 600; line-height: 1.25;">Parathyroid &amp; Calcium Disorders</h3>
+<p style="margin: 0; color: #4A504A; font-size: 16px;">Evaluation and care for calcium and parathyroid disorders.</p>
+<a href="Parathyroid.dc.html" style="margin-top: auto; padding-top: 4px; font-weight: 600; font-size: 15px; color: {{accent}}; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 36px;">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div style="background: #F8F8F4; border: 1px solid #D8DAD0; border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;">
+<h3 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-size: 20px; font-weight: 600; line-height: 1.25;">Osteoporosis</h3>
+<p style="margin: 0; color: #4A504A; font-size: 16px;">Fracture-risk assessment and treatment to protect your bones.</p>
+<a href="Osteoporosis.dc.html" style="margin-top: auto; padding-top: 4px; font-weight: 600; font-size: 15px; color: {{accent}}; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 36px;">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div style="background: #F8F8F4; border: 1px solid #D8DAD0; border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;">
+<h3 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-size: 20px; font-weight: 600; line-height: 1.25;">Menopause</h3>
+<p style="margin: 0; color: #4A504A; font-size: 16px;">Hormonal and non-hormonal options for menopausal symptoms.</p>
+<a href="Menopause.dc.html" style="margin-top: auto; padding-top: 4px; font-weight: 600; font-size: 15px; color: {{accent}}; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 36px;">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div style="background: #F8F8F4; border: 1px solid #D8DAD0; border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;">
+<h3 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-size: 20px; font-weight: 600; line-height: 1.25;">Low Testosterone in Men</h3>
+<p style="margin: 0; color: #4A504A; font-size: 16px;">Careful diagnosis before deciding on testosterone therapy.</p>
+<a href="LowT.dc.html" style="margin-top: auto; padding-top: 4px; font-weight: 600; font-size: 15px; color: {{accent}}; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 36px;">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div class="cta-card" style="background: #5C7A64; color: #FFFFFF; border-radius: 20px; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px;">
+<h3 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-size: 20px; font-weight: 600; line-height: 1.25; color: #FFFFFF;">Not sure where to start?</h3>
+<p style="margin: 0; color: #E4E6DE; font-size: 16px;">Tell us what you’re experiencing and Dr. Choi will help you sort it out.</p>
+<a href="Book.dc.html" style="margin-top: auto; align-self: flex-start; background: #FFFFFF; color: #252A26; font-weight: 600; font-size: 15px; text-decoration: none; padding: 10px 18px; border-radius: 999px; min-height: 40px; box-sizing: border-box; display: inline-flex; align-items: center;">Request a consultation</a>
+</div>
+</div>
+</section>
+
+<!-- How direct care works -->
+<section id="how" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px;">
+<div style="background: #E4E6DE; color: #252A26; border-radius: 32px; padding: clamp(36px, 5vw, 72px); display: flex; flex-wrap: wrap; gap: 48px;">
+<div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+<span style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5C7A64;">Why we work outside insurance</span>
+<h2 style="margin: 0 0 6px; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: clamp(32px, 3.6vw, 46px); line-height: 1.1; letter-spacing: -0.02em;">Your care should be decided by you and your doctor. <span style="display: block; margin-top: 0.35em;">Not your insurance.</span></h2>
+<p style="margin: 0; color: #4A504A;">Insurance can influence how much time a doctor has with you, who you see and how often you’re seen. At Personal Endocrine, those decisions stay between you and Dr. Choi. You can still use your insurance for labs, imaging and prescriptions.</p>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px 32px;">
+<div style="border-top: 1px solid #C9CEC2; padding-top: 18px;"><div style="font-weight: 600; font-size: 18px;">Time to listen</div><div style="color: #5D635D; font-size: 15px;">Your first visit can last up to an hour, giving Dr. Choi time to understand your history, symptoms and concerns.</div></div>
+<div style="border-top: 1px solid #C9CEC2; padding-top: 18px;"><div style="font-weight: 600; font-size: 18px;">The same doctor, every time</div><div style="color: #5D635D; font-size: 15px;">Every appointment is with Dr. Choi. Your care is never handed off to an NP or PA.</div></div>
+<div style="border-top: 1px solid #C9CEC2; padding-top: 18px;"><div style="font-weight: 600; font-size: 18px;">Results explained by your doctor</div><div style="color: #5D635D; font-size: 15px;">Dr. Choi personally walks you through your results, what they mean and what comes next.</div></div>
+<div style="border-top: 1px solid #C9CEC2; padding-top: 18px;"><div style="font-weight: 600; font-size: 18px;">Support between visits</div><div style="color: #5D635D; font-size: 15px;">Members can message Dr. Choi directly when questions come up between appointments.</div></div>
+<div style="border-top: 1px solid #C9CEC2; padding-top: 18px;"><div style="font-weight: 600; font-size: 18px;">Appointments without the long wait</div><div style="color: #5D635D; font-size: 15px;">Most appointments are available within 1 to 3 business days.</div></div>
+<div style="border-top: 1px solid #C9CEC2; padding-top: 18px;"><div style="font-weight: 600; font-size: 18px;">Care where you are</div><div style="color: #5D635D; font-size: 15px;">See Dr. Choi in North Tustin or by telehealth, with care available in English, Spanish and Korean.</div></div>
+</div>
+</div>
+</section>
+
+<!-- Pricing -->
+
+
+<!-- Meet Dr. Choi -->
+<div style="background: #F8F8F4; border-top: 1px solid #D8DAD0;">
+<section id="pricing" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 104px; display: flex; flex-direction: column; gap: 48px;">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 680px;">
+<h2 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.1; letter-spacing: -0.02em;">Simple, transparent pricing</h2>
+<p style="margin: 0; color: #4A504A;">Every plan starts with an initial consultation, where you and Dr. Choi decide what level of care fits.</p>
+</div>
+<div class="plans" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; align-items: stretch;">
+<div class="plan" style="border-radius: 24px; padding: 36px; display: flex; flex-direction: column; gap: 20px;">
+<div class="plan-eye" style="font-weight: 600; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;">Pay per visit</div>
+<div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;"><span style="font-family: 'Schibsted Grotesk', sans-serif; font-size: 52px; font-weight: 700; line-height: 1;">$400</span></div>
+<div style="color: #4A504A; font-size: 16px;">Initial consultation, up to 1 hour. Includes a 10-minute call to review your results.</div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; border-top: 1px solid #D8DAD0; padding-top: 20px;">
+<div style="display: flex; justify-content: space-between; gap: 12px;"><span>Follow-up, in person or telehealth, up to 30 min</span><span style="font-weight: 600;">$180</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px;"><span>Telephone visit, up to 15 min</span><span style="font-weight: 600;">$60</span></div>
+<div style="display: flex; justify-content: space-between; gap: 12px;"><span>Prior authorizations, appeals and forms</span><span style="font-weight: 600;">$50</span></div>
+</div>
+<a href="Book.dc.html" class="plan-btn" style="margin-top: auto; text-align: center; text-decoration: none; padding: 14px 24px; border-radius: 999px; font-weight: 600; min-height: 44px; box-sizing: border-box;">Request a consultation</a>
+<a href="PayPerVisit.dc.html" aria-label="See plan details: Pay per visit" style="align-self: center; margin: -4px 0 -10px; font-weight: 600; font-size: 15px; color: {{accent}}; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 40px;">See plan details<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div class="plan on" style="border-radius: 24px; padding: 36px; display: flex; flex-direction: column; gap: 20px; position: relative;">
+<div class="plan-eye" style="font-weight: 600; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;">Ongoing care</div>
+<div style="display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;"><span style="font-family: 'Schibsted Grotesk', sans-serif; font-size: 52px; font-weight: 700; line-height: 1;">$250</span><span style="color: #5D635D;">/ month</span></div>
+<div style="color: #4A504A; font-size: 16px;">For patients who want consistent access and ongoing management of a chronic endocrine condition.</div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; border-top: 1px solid #D8DAD0; padding-top: 20px;">
+<span>1 follow-up visit per month</span>
+<span>Telephone visits</span>
+<span>Review of relevant results and treatment data</span>
+<span>Direct portal messaging with Dr. Choi</span>
+<span>Prior authorizations, appeals and forms included</span>
+</div>
+<a href="Book.dc.html" class="plan-btn" style="margin-top: auto; text-align: center; text-decoration: none; padding: 14px 24px; border-radius: 999px; font-weight: 600; min-height: 44px; box-sizing: border-box;">Request a consultation</a>
+<a href="Ongoing.dc.html" aria-label="See plan details: Ongoing care" style="align-self: center; margin: -4px 0 -10px; font-weight: 600; font-size: 15px; color: {{accent}}; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 40px;">See plan details<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div class="plan" style="border-radius: 24px; padding: 36px; display: flex; flex-direction: column; gap: 20px;">
+<div class="plan-eye" style="font-weight: 600; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;">Diabetes and Weight Management</div>
+<div style="display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;"><span style="font-family: 'Schibsted Grotesk', sans-serif; font-size: 52px; font-weight: 700; line-height: 1;">$360</span><span style="color: #5D635D;">/ month</span></div>
+<div style="color: #4A504A; font-size: 16px;">A 6-month intensive program. $360 a month, or $2,000 paid up front.</div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; border-top: 1px solid #D8DAD0; padding-top: 20px;">
+<span>Follow-up visit every two weeks</span>
+<span>Telephone visits</span>
+<span>Glucose log and CGM reviews</span>
+<span>Direct portal messaging with Dr. Choi</span>
+<span>Prior authorizations, appeals and forms included</span>
+</div>
+<a href="Book.dc.html" class="plan-btn" style="margin-top: auto; text-align: center; text-decoration: none; padding: 14px 24px; border-radius: 999px; font-weight: 600; min-height: 44px; box-sizing: border-box;">Request a consultation</a>
+<a href="Program.dc.html" aria-label="See plan details: Diabetes and Weight Management Program" style="align-self: center; margin: -4px 0 -10px; font-weight: 600; font-size: 15px; color: {{accent}}; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 40px;">See plan details<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+<a href="Pricing.dc.html" style="align-self: center; margin-top: -8px; font-weight: 600; font-size: 16px; color: {{accent}}; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-height: 44px;">See full pricing, insurance and policies<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</section>
+</div><section id="doctor" style="background: #E4E6DE; border-top: 1px solid #D8DAD0; border-bottom: 1px solid #D8DAD0;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; gap: 64px; align-items: start;">
+<div style="flex: 1 1 360px; min-width: 0; aspect-ratio: 1 / 1; border-radius: 28px; background: #D6DCD0; overflow: hidden;"><img src="/_blob/8dffb91312f1eb610f55b25b5af9c044" alt="Jinsun Choi, MD" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%;"></div>
+<div style="flex: 999 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 24px;">
+<span style="font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{accent}};">Meet your doctor</span>
+<h2 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.1; letter-spacing: -0.02em;">Jinsun Choi, MD</h2>
+<p style="margin: 0; color: #4A504A; font-size: 18px;">Dr. Choi has practiced endocrinology in Orange County for more than 15 years. She founded Personal Endocrine because she wanted more time with her patients: time to listen, to explain, and to build relationships that continue beyond a single appointment.</p>
+<p style="margin: 0; color: #4A504A; font-size: 18px;">She is board-certified in Endocrinology and Obesity Medicine and provides care in English, Spanish and Korean.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0 32px;">
+<div style="border-top: 1px solid #CDD1C5; padding: 16px 0;"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5D635D;">Medical degree</div><div style="font-weight: 500;">UC Irvine School of Medicine</div></div>
+<div style="border-top: 1px solid #CDD1C5; padding: 16px 0;"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5D635D;">Residency</div><div style="font-weight: 500;">Internal Medicine, Cedars-Sinai</div></div>
+<div style="border-top: 1px solid #CDD1C5; padding: 16px 0;"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5D635D;">Fellowship</div><div style="font-weight: 500;">Endocrinology, Harbor-UCLA and City of Hope</div></div>
+<div style="border-top: 1px solid #CDD1C5; padding: 16px 0;"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5D635D;">Hospital experience</div><div style="font-weight: 500;">Hoag Hospital and Kaiser Permanente, Orange County</div></div>
+</div>
+<a href="DrChoi.dc.html" style="font-weight: 600;">Read Dr. Choi's full bio</a>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="max-width: 1200px; margin: 0 auto; padding: 104px 24px; display: flex; flex-wrap: wrap; gap: 48px;">
+<div style="flex: 1 1 320px; min-width: 0;">
+<h2 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.1; letter-spacing: -0.02em;">Frequently Asked Questions</h2>
+</div>
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; border-bottom: 1px solid #D8DAD0;">
+<details style="border-top: 1px solid #D8DAD0;"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; min-height: 44px; cursor: pointer; font-weight: 600; font-size: 18px; list-style: none;">What is Personal Endocrine?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5C7A64" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary><div style="color: #4A504A; padding: 0 0 22px; max-width: 680px;"><p style="margin: 0 0 10px;">Personal Endocrine is a direct specialty care endocrinology practice led by Jinsun Choi, MD. Dr. Choi treats diabetes, obesity, thyroid and parathyroid conditions, osteoporosis, menopause, low testosterone and other endocrine concerns.</p><p style="margin: 0;">The practice is designed to give Dr. Choi more time with each patient and allow care decisions to be made without the constraints of insurance-based visits.</p></div></details>
+<details style="border-top: 1px solid #D8DAD0;"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; min-height: 44px; cursor: pointer; font-weight: 600; font-size: 18px; list-style: none;">Do you accept insurance?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5C7A64" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary><div style="color: #4A504A; padding: 0 0 22px; max-width: 680px;"><p style="margin: 0 0 10px;">Personal Endocrine does not accept or bill insurance for visits. You pay the practice directly for your care.</p><p style="margin: 0;">If you have commercial insurance, we can provide a superbill on request that you may submit for possible out-of-network reimbursement. Reimbursement depends on your individual plan.</p></div></details>
+<details style="border-top: 1px solid #D8DAD0;"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; min-height: 44px; cursor: pointer; font-weight: 600; font-size: 18px; list-style: none;">Do you accept Medicare?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5C7A64" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary><div style="color: #4A504A; padding: 0 0 22px; max-width: 680px;"><p style="margin: 0;">No. Dr. Choi has opted out of Medicare. Visits are paid directly to Personal Endocrine and cannot be submitted to Medicare for reimbursement. Personal Endocrine also does not accept Medi-Cal.</p></div></details>
+<details style="border-top: 1px solid #D8DAD0;"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; min-height: 44px; cursor: pointer; font-weight: 600; font-size: 18px; list-style: none;">Can I still use my insurance for labs, imaging and medications?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5C7A64" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary><div style="color: #4A504A; padding: 0 0 22px; max-width: 680px;"><p style="margin: 0 0 10px;">In many cases, yes. You may still use your insurance for labs, imaging and prescriptions, subject to your plan.</p><p style="margin: 0;">Coverage and reimbursement vary, so you are responsible for confirming the details of your individual insurance plan.</p></div></details>
+<details style="border-top: 1px solid #D8DAD0;"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; min-height: 44px; cursor: pointer; font-weight: 600; font-size: 18px; list-style: none;">Is Personal Endocrine a concierge practice?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5C7A64" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary><div style="color: #4A504A; padding: 0 0 22px; max-width: 680px;"><p style="margin: 0;">Personal Endocrine uses a direct specialty care model. You can pay for individual visits or choose a membership for ongoing care. Visits are paid directly to the practice rather than billed to insurance.</p></div></details>
+<details style="border-top: 1px solid #D8DAD0;"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; min-height: 44px; cursor: pointer; font-weight: 600; font-size: 18px; list-style: none;">Do I have to become a member?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5C7A64" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary><div style="color: #4A504A; padding: 0 0 22px; max-width: 680px;"><p style="margin: 0 0 10px;">No. You can pay for individual services without joining a membership.</p><p style="margin: 0;">If you choose a membership, you may cancel with 30 days’ notice. If you later decide to re-enroll, a $300 re-enrollment fee applies.</p></div></details>
+<details style="border-top: 1px solid #D8DAD0;"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; min-height: 44px; cursor: pointer; font-weight: 600; font-size: 18px; list-style: none;">Is there a deposit?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5C7A64" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary><div style="color: #4A504A; padding: 0 0 22px; max-width: 680px;"><p style="margin: 0;">A $75 deposit reserves your first appointment and is applied toward the cost of your visit. The deposit is non-refundable.</p></div></details>
+<details style="border-top: 1px solid #D8DAD0;"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; min-height: 44px; cursor: pointer; font-weight: 600; font-size: 18px; list-style: none;">Can I be seen by telehealth?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5C7A64" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary><div style="color: #4A504A; padding: 0 0 22px; max-width: 680px;">Yes. Follow-up visits are available in person or by telehealth.</div></details>
+<details style="border-top: 1px solid #D8DAD0;"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; min-height: 44px; cursor: pointer; font-weight: 600; font-size: 18px; list-style: none;">Do I still need a primary care doctor?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5C7A64" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary><div style="color: #4A504A; padding: 0 0 22px; max-width: 680px;"><p style="margin: 0 0 10px;">Yes. Dr. Choi specializes in endocrinology and does not provide primary care.</p><p style="margin: 0;">We encourage patients to maintain an ongoing relationship with a primary care physician for healthcare needs outside of endocrinology.</p></div></details>
+<details style="border-top: 1px solid #D8DAD0;"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; min-height: 44px; cursor: pointer; font-weight: 600; font-size: 18px; list-style: none;">What happens if Dr. Choi is away?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5C7A64" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></summary><div style="color: #4A504A; padding: 0 0 22px; max-width: 680px;"><p style="margin: 0 0 10px;">The Personal Endocrine team will continue to receive portal messages and emails. Dr. Choi can respond to messages, order labs and send prescriptions while she is away.</p><p style="margin: 0;">If she expects to be unavailable due to limited internet access, she will arrange coverage with another board-certified physician for urgent medical needs.</p></div></details>
+</div>
+</section>
+
+<!-- CTA band -->
+
+
+<!-- Footer -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 104px;">
+<div style="background: {{accent}}; color: #FFFFFF; border-radius: 32px; padding: clamp(36px, 5vw, 64px); display: flex; flex-wrap: wrap; gap: 28px; align-items: center; justify-content: space-between;">
+<div style="display: flex; flex-direction: column; gap: 8px; max-width: 620px;">
+<h2 style="margin: 0; font-family: 'Schibsted Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 3.2vw, 42px); line-height: 1.1; letter-spacing: -0.02em;">It starts with a doctor who has time to listen.</h2>
+<p style="margin: 0; color: #E8F0EA;">Meet with Dr. Choi for an unhurried first visit, typically available within 1 to 3 business days.</p>
+</div>
+<a href="Book.dc.html" style="background: #F8F8F4; color: #252A26; text-decoration: none; padding: 16px 30px; border-radius: 999px; font-weight: 600; font-size: 17px; min-height: 44px; box-sizing: border-box;">Request a consultation</a>
+</div>
+</section><footer style="background: #252A26; color: #C9C6BF; font-size: 15px; line-height: 1.6;">
+<div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 0;">
+<div style="display: flex; flex-wrap: wrap; gap: 16px 48px; align-items: center; justify-content: flex-start; padding-bottom: 40px; border-bottom: 1px solid #3A3F3B;">
+<div style="display: flex; flex-direction: column; gap: 2px;">
+<span style="font-weight: 600; font-size: 17px; color: #FFFFFF;">Stay in touch</span>
+<span style="font-size: 14px; color: #A6A199;">Occasional updates from Personal Endocrine.</span>
+</div>
+<form style="display: flex; gap: 8px; width: 100%; max-width: 420px; margin: 0;">
+<input type="email" aria-label="Email address" placeholder="Email address" autocomplete="email" style="font: inherit; font-size: 15px; color: #FFFFFF; background: transparent; border: 1px solid #4A504B; border-radius: 999px; padding: 0 18px; height: 44px; flex: 1 1 auto; min-width: 0; box-sizing: border-box;">
+<button type="button" style="font: inherit; font-weight: 600; font-size: 15px; background: #5C7A64; color: #FFFFFF; border: 0; border-radius: 999px; padding: 0 22px; height: 44px; cursor: pointer; flex: none;">Subscribe</button>
+</form>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px 32px; padding: 48px 0;">
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span style="display: flex; margin-bottom: 8px;"><span style="display: inline-flex; flex-direction: column; align-items: center; gap: 2.4px; line-height: 1; color: #FFFFFF; font-family: 'Montserrat', sans-serif; font-weight: 500;"><span style="font-size: 20px; letter-spacing: 0.08em; margin-right: -0.08em; white-space: nowrap;">PERS<span style="position: relative; top: -0.155em; font-size: 0.86em;">O</span><span aria-hidden="true" style="display: inline-block; width: 0.621em; height: 0.07em; margin-left: -0.752em; margin-right: 0.131em; background: currentColor;"></span>NAL</span><span style="font-size: 9.2px; letter-spacing: 0.34em; margin-right: -0.34em; white-space: nowrap;">ENDOCRINE</span></span></span>
+<span style="font-size: 14px;">Jinsun Choi, MD</span>
+<span style="font-size: 14px; color: #A6A199;">English · Español · 한국어</span>
+<span style="display: flex; gap: 8px; margin-top: 6px;"><a href="#top" aria-label="Facebook" title="Facebook" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid #4A504B; border-radius: 999px; color: #C9C6BF; text-decoration: none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19c.6-3 2.8-4.8 5.5-4.8s4.9 1.8 5.5 4.8"></path><circle cx="17" cy="9" r="2.4"></circle><path d="M16.2 14.3c2.3.2 3.8 1.8 4.3 4.2"></path></svg></a><a href="#top" aria-label="Instagram" title="Instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid #4A504B; border-radius: 999px; color: #C9C6BF; text-decoration: none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.5h3l1.6-2.5h6.8L17 8.5h3v10H4z"></path><circle cx="12" cy="13.2" r="3.2"></circle></svg></a></span>
+</div>
+<nav aria-label="Specialties" style="display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #FFFFFF; margin-bottom: 4px;">Specialties</span>
+<a href="Diabetes.dc.html" style="color: #C9C6BF; text-decoration: none;">Type 1 and Type 2 Diabetes</a>
+<a href="Weight.dc.html" style="color: #C9C6BF; text-decoration: none;">Weight Management</a>
+<a href="Thyroid.dc.html" style="color: #C9C6BF; text-decoration: none;">Thyroid</a>
+<a href="Parathyroid.dc.html" style="color: #C9C6BF; text-decoration: none;">Parathyroid &amp; Calcium Disorders</a>
+<a href="Osteoporosis.dc.html" style="color: #C9C6BF; text-decoration: none;">Osteoporosis</a>
+<a href="Menopause.dc.html" style="color: #C9C6BF; text-decoration: none;">Menopause</a>
+<a href="LowT.dc.html" style="color: #C9C6BF; text-decoration: none;">Low Testosterone in Men</a>
+</nav>
+<nav aria-label="Your care" style="display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #FFFFFF; margin-bottom: 4px;">Your care</span>
+<a href="#how" style="color: #C9C6BF; text-decoration: none;">Our approach</a>
+<a href="Pricing.dc.html" style="color: #C9C6BF; text-decoration: none;">Pricing and memberships</a>
+<a href="DrChoi.dc.html" style="color: #C9C6BF; text-decoration: none;">Meet Dr. Choi</a>
+<a href="#faq" style="color: #C9C6BF; text-decoration: none;">Frequently asked questions</a>
+<a href="Book.dc.html" style="color: #C9C6BF; text-decoration: none;">Request a consultation</a>
+<a href="#top" style="color: #C9C6BF; text-decoration: none;">Patient portal</a>
+</nav>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #FFFFFF; margin-bottom: 4px;">Visit</span>
+<span>12231 Newport Avenue<br>North Tustin, CA 92705</span>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=12231+Newport+Ave+North+Tustin+CA+92705" style="color: #C9C6BF; text-decoration: none;">Get directions</a>
+<span>In person or telehealth</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span style="font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #FFFFFF; margin-bottom: 4px;">Contact</span>
+<a href="tel:9494412164" style="color: #C9C6BF; text-decoration: none;">(949) 441-2164</a>
+<span>Fax (949) 441-2184</span>
+<a href="mailto:info@personalendocrine.com" style="color: #C9C6BF; text-decoration: none;">info@personalendocrine.com</a>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: flex-start; justify-content: space-between; padding: 24px 0 32px; border-top: 1px solid #3A3F3B; font-size: 13px; color: #8F8A83;">
+<div style="display: flex; flex-direction: column; gap: 2px;"><span>© 2026 Personal Endocrine, P.C.</span><span>This site does not provide medical advice. In an emergency, call 911.</span></div>
+<nav aria-label="Legal" style="display: flex; flex-wrap: wrap; gap: 8px 20px;">
+<a href="Privacy.dc.html" style="color: #8F8A83; text-decoration: none;">Privacy Policy</a>
+<a href="NPP.dc.html" style="color: #8F8A83; text-decoration: none;">Notice of Privacy Practices</a>
+<a href="GFE.dc.html" style="color: #8F8A83; text-decoration: none;">Good Faith Estimate</a>
+<a href="Terms.dc.html" style="color: #8F8A83; text-decoration: none;">Terms of Use</a>
+<a href="Accessibility.dc.html" style="color: #8F8A83; text-decoration: none;">Accessibility Statement</a>
+</nav>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#5C7A64","options":["#5C7A64","#7E9A84","#8E5E62","#252A26"]},"$preview":{"width":1440,"height":5300}}'>
+class Component extends DCLogic {
+renderVals() {
+return { accent: this.props.accent ?? '#5C7A64' };
+}
+}
+</script>
+</body>
+</html>

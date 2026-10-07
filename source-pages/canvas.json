@@ -1,0 +1,202 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Book.dc.html": {
+      "expand": "fill",
+      "h": 2700,
+      "title": "Request an Appointment (build 34)",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "Diabetes.dc.html": {
+      "expand": "fill",
+      "h": 2200,
+      "title": "Diabetes (build 19)",
+      "w": 1440,
+      "x": 0,
+      "y": 5800
+    },
+    "Main.dc.html": {
+      "expand": "fill",
+      "h": 5300,
+      "title": "Home (build 74)",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Menopause.dc.html": {
+      "expand": "fill",
+      "h": 2200,
+      "title": "Menopause (build 16)",
+      "w": 1440,
+      "x": 6080,
+      "y": 5800
+    },
+    "MobileBook.dc.html": {
+      "h": 4400,
+      "title": "Mobile: Request an Appointment",
+      "w": 390,
+      "x": 3510,
+      "y": 0
+    },
+    "MobileDiabetes.dc.html": {
+      "h": 3800,
+      "title": "Mobile: Diabetes",
+      "w": 390,
+      "x": 3980,
+      "y": 0
+    },
+    "MobileHome.dc.html": {
+      "h": 8000,
+      "title": "Mobile: Home",
+      "w": 390,
+      "x": 3040,
+      "y": 0
+    },
+    "Osteoporosis.dc.html": {
+      "expand": "fill",
+      "h": 2200,
+      "title": "Osteoporosis (build 16)",
+      "w": 1440,
+      "x": 4560,
+      "y": 5800
+    },
+    "Palettes.dc.html": {
+      "h": 1100,
+      "title": "Palette directions (pick one)",
+      "w": 1600,
+      "x": -1680,
+      "y": 0
+    },
+    "Parathyroid.dc.html": {
+      "expand": "fill",
+      "h": 2200,
+      "title": "Parathyroid (build 16)",
+      "w": 1440,
+      "x": 7600,
+      "y": 5800
+    },
+    "Thyroid.dc.html": {
+      "expand": "fill",
+      "h": 2200,
+      "title": "Thyroid (build 16)",
+      "w": 1440,
+      "x": 3040,
+      "y": 5800
+    },
+    "Weight.dc.html": {
+      "expand": "fill",
+      "h": 2200,
+      "title": "Weight Management (build 17)",
+      "w": 1440,
+      "x": 1520,
+      "y": 5800
+    },
+    "Logos.dc.html": {
+      "h": 2880,
+      "title": "Logo directions (build 3)",
+      "w": 1600,
+      "x": -1680,
+      "y": 1300
+    },
+    "LowT.dc.html": {
+      "expand": "fill",
+      "h": 2200,
+      "title": "Low Testosterone in Men (build 7)",
+      "w": 1440,
+      "x": 9120,
+      "y": 5800
+    },
+    "Pricing.dc.html": {
+      "expand": "fill",
+      "h": 2600,
+      "title": "Pricing (build 12)",
+      "w": 1440,
+      "x": 4560,
+      "y": 0
+    },
+    "Program.dc.html": {
+      "expand": "fill",
+      "h": 2000,
+      "title": "Diabetes and Weight Management Program (build 8)",
+      "w": 1440,
+      "x": 6080,
+      "y": 0
+    },
+    "PayPerVisit.dc.html": {
+      "expand": "fill",
+      "h": 2000,
+      "title": "Pay per visit (build 8)",
+      "w": 1440,
+      "x": 7600,
+      "y": 0
+    },
+    "Ongoing.dc.html": {
+      "expand": "fill",
+      "h": 2000,
+      "title": "Ongoing care (build 8)",
+      "w": 1440,
+      "x": 9120,
+      "y": 0
+    },
+    "DrChoi.dc.html": {
+      "expand": "fill",
+      "h": 3200,
+      "title": "Dr. Choi bio (build 4)",
+      "w": 1440,
+      "x": 10640,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-06T18:30:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "mobile": {
+      "kind": "title1",
+      "maxW": 1330,
+      "text": "Mobile previews",
+      "w": 240,
+      "x": 3040,
+      "y": -300
+    },
+    "specialties": {
+      "kind": "title1",
+      "maxW": 8000,
+      "text": "Specialty pages",
+      "w": 240,
+      "x": 0,
+      "y": 5500
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Book.dc.html",
+    "DrChoi.dc.html",
+    "Pricing.dc.html",
+    "Program.dc.html",
+    "Ongoing.dc.html",
+    "PayPerVisit.dc.html",
+    "Palettes.dc.html",
+    "Logos.dc.html",
+    "Diabetes.dc.html",
+    "Weight.dc.html",
+    "Thyroid.dc.html",
+    "Osteoporosis.dc.html",
+    "Menopause.dc.html",
+    "Parathyroid.dc.html",
+    "LowT.dc.html",
+    "MobileHome.dc.html",
+    "MobileBook.dc.html",
+    "MobileDiabetes.dc.html"
+  ],
+  "pages": [],
+  "title": "Personal Endocrine Redesign"
+}
